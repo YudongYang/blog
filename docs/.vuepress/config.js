@@ -5,6 +5,9 @@ let fileTree = [{
   text: 'Linux',
   link: '/Linux',
   items: [{
+    text: 'Linux',
+    link: '/Linux/'
+  }, {
     text: 'ubuntu安装',
     link: '/Linux/ubuntu安装'
   }, {
