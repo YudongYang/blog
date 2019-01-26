@@ -3,8 +3,8 @@ home: true
 heroImage: /avatar/sea.jpeg
 heroText: 宇东的博客
 tagline: 这是宇东的博客，纯粹是个记事本
-actionText: 查看更多 →
-actionLink: /zh/guide/
+actionText: 查看更多 →（这个按钮还没有搞好）
+actionLink: /
 features:
 - title: 懒
   details: 经常不更新
