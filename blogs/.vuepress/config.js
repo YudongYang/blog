@@ -13,6 +13,9 @@ let fileTree = [{
   }, {
     text: '开发环境',
     link: '/Linux/开发环境'
+  }, {
+    text: '安装psensor',
+    link: '/Linux/安装psensor'
   }]
 }]
 
