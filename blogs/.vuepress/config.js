@@ -23,6 +23,9 @@ let fileTree = [{
   items: [{
     text: 'docker常用命令',
     link: '/Docker/docker常用命令'
+  }, {
+    text: 'ubuntu 安装 docker & docker-compose',
+    link: '/Docker/ubuntu安装docker'
   }]
 }]
 
