@@ -23,6 +23,9 @@
   },
   "homepage": "https://github.com/YudongYang/blog#readme",
   "dependencies": {
-    "vuepress": "0.14.8"
+    "vuepress": "1.5.3"
+  },
+  "devDependencies": {
+    "@vuepress/plugin-google-analytics": "^1.5.3"
   }
 }
