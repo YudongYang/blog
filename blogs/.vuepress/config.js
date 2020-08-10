@@ -83,5 +83,13 @@ module.exports = {
   themeConfig: {
     nav: fileTree,
     sidebar: sidebarTree
-  }
+  },
+  plugins: [
+    [
+      '@vuepress/google-analytics',
+      {
+        'ga': 'UA-136337873-2' // UA-00000000-0
+      }
+    ]
+  ]
 }
