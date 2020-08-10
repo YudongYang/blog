@@ -17,6 +17,13 @@ let fileTree = [{
     text: '安装psensor',
     link: '/Linux/安装psensor'
   }]
+}, {
+  text: 'docker',
+  link: '/Docker',
+  items: [{
+    text: 'docker常用命令',
+    link: '/Docker/docker常用命令'
+  }]
 }]
 
 let sidebarTree = []
