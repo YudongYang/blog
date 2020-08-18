@@ -10,4 +10,4 @@ VuePress: https://vuepress.vuejs.org/zh/
 
 ## Live
 
-http://blog.yudong.xyz/
+https://blog.yudong.xyz/
