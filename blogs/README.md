@@ -4,7 +4,7 @@ heroImage: /avatar/sea.jpeg
 heroText: 宇东的博客
 tagline: 这是宇东的博客，主要是一些技术方面的文章，欢迎大家交流
 actionText: 查看更多 →（这个按钮还没有搞好）
-actionLink: /
+actionLink: https://github.com/YudongYang/blog
 features:
 - title: 编程技术
   details: 一些编程相关的技术
