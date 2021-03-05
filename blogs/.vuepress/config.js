@@ -27,6 +27,13 @@ let fileTree = [{
     text: 'ubuntu 安装 docker & docker-compose',
     link: '/Docker/ubuntu安装docker'
   }]
+}, {
+  text: 'ruby',
+  link: '/Ruby',
+  items: [{
+    text: 'ruby入门',
+    link: '/Ruby/ruby入门'
+  }]
 }]
 
 let sidebarTree = []
