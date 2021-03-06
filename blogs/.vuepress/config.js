@@ -43,6 +43,12 @@ let fileTree = [{
   }, {
     text: 'PostgreSQL 安装并测试',
     link: '/Database/PostgreSQL/安装测试'
+  }, {
+    text: 'ElasticSearch',
+    link: '/Database/ElasticSearch/'
+  }, {
+    text: 'ElasticSearch 安装并测试',
+    link: '/Database/ElasticSearch/安装测试'
   }]
 }, {
   text: '前端',
