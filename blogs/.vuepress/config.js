@@ -35,6 +35,16 @@ let fileTree = [{
     link: '/Ruby/ruby入门'
   }]
 }, {
+  text: '数据库',
+  link: '/Database',
+  items: [{
+    text: 'PostgreSQL',
+    link: '/Database/PostgreSQL/'
+  }, {
+    text: 'PostgreSQL 安装并测试',
+    link: '/Database/PostgreSQL/安装测试'
+  }]
+}, {
   text: '前端',
   link: '/Front',
   items: [{

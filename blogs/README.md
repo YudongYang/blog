@@ -11,6 +11,6 @@ features:
 - title: 中间件
   details: MQ Nginx k8s Webpack
 - title: 数据库
-  details: MySQL PostgresSQL Oracle Redis ElasticSearch
+  details: MySQL PostgreSQL Oracle Redis ElasticSearch
 footer: MIT Licensed | Copyright © 2019-present YuDong
 ---
