@@ -18,7 +18,7 @@ let fileTree = [{
     link: '/Linux/安装psensor'
   }]
 }, {
-  text: 'docker',
+  text: 'Docker',
   link: '/Docker',
   items: [{
     text: 'docker常用命令',
@@ -28,11 +28,18 @@ let fileTree = [{
     link: '/Docker/ubuntu安装docker'
   }]
 }, {
-  text: 'ruby',
+  text: 'Ruby',
   link: '/Ruby',
   items: [{
     text: 'ruby入门',
     link: '/Ruby/ruby入门'
+  }]
+}, {
+  text: '前端',
+  link: '/Front',
+  items: [{
+    text: 'Vue入门',
+    link: '/Front/vue/vue'
   }]
 }]
 

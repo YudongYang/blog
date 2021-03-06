@@ -1,0 +1,184 @@
+<html>
+  <head>
+    <title>RCC Vue.js Learning - 指令（基础） </title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+      .content-box {
+        border: solid gray 1px;
+        margin: 10px;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <body>
+    <div id="app">
+      <div class="container">
+
+        <!-- v-text -->
+        <div class="row content-box border border-secondary">
+          <div class="col-md-2">
+            <div>v-text</div>
+            <div>v-text 的效果和 {{}} 一样</div>
+          </div>
+          <div class="col-md-10">
+            <label>{{}}</label><p>{{ msg }}</p>
+            <label>v-text</label><p v-text="msg"></p>
+            <input v-model="msg" class="form-control" />
+          </div>
+        </div>
+
+        <!-- v-html -->
+        <div class="row content-box">
+          <div class="col-md-2">
+            <div>v-html</div>
+            <div>v-html 可以渲染 html </div>
+          </div>
+          <div class="col-md-10">
+            <label>v-text</label><p>{{ htmlContent }}</p>
+            <label>v-html</label><p v-html="htmlContent"></p>
+            <input v-model="htmlContent" class="form-control" />
+          </div>
+        </div>
+
+        <!-- v-show -->
+        <div class="row content-box">
+          <div class="col-md-2">
+            <div>v-show</div>
+          </div>
+          <div class="col-md-10">
+            <div v-show="showContent">v-show 只是将这个 dom 元素设置 display: none</div>
+          </div>
+        </div>
+
+        <!-- v-if -->
+        <div class="row content-box">
+          <div class="col-md-2">
+            <div>v-if</div>
+          </div>
+          <div class="col-md-10">
+            <div v-if="showContent">v-if 会将对应的 dom 元素 destory</div>
+          </div>
+        </div>
+
+        <!-- v-show & v-if -->
+        <div class="row content-box">
+          <div class="col-md-2">
+            <div>v-if & v-show</div>
+          </div>
+          <div class="col-md-10">
+            <div>
+              <button class="form-control btn-success" v-on:click=" showContent = !showContent ">点击切换显示</button>
+            </div>
+            <div>请使用 Developer Tools 查看点击前后的 dom 元素变化</div>
+            <div>dom 元素的销毁消耗比较大，对于需要频繁切换显示于隐藏，可以使用 v-show</div>
+            <div>如果元素基本一次判断渲染完成，可以使用 v-if 减少 dom 元素的数量</div>
+            <div>在实际工作中，需要触发 vue 组件的生命周期的情况下，或者需要重新渲染组件，可以使用 v-if 进行组件的销毁和重新渲染</div>
+          </div>
+        </div>
+
+        <!-- v-if & v-else & v-else-if -->
+        <div class="row content-box">
+          <div class="col-md-2">
+            <div>v-if & v-else & v-else-if</div>
+          </div>
+          <div class="col-md-10">
+            <div>
+              <div v-if=" selectedType === 'RCC' ">
+                您选择的是: {{ typeOptions['RCC'] }}
+              </div>
+              <div v-else-if=" selectedType === 'ICC' ">
+                您选择的是: {{ typeOptions['ICC'] }}
+              </div>
+              <div v-else-if=" selectedType === 'VUE' ">
+                您选择的是: {{ typeOptions['VUE'] }}
+              </div>
+              <div v-else>
+                您选择的是: I don't know
+              </div>
+            </div>
+            <div>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" v-on:click="showSelectedOptions = !showSelectedOptions">
+                  {{ selectedType ? typeOptions[selectedType] : '请选择' }}
+                </button>
+                <div v-show=" showSelectedOptions " class="dropdown-menu" style="display: block;">
+                  <a v-for=" (v, k) in typeOptions " :key="k" v-on:click="selectOptionOnClick(k, v)" class="dropdown-item" href="javascript: void(0);">{{ v }}</a>
+                </div>
+              </div>
+            </div>
+            <div>
+              语法为:
+              <code>v-if</code> ... <code>v-else-if</code> ... <code>v-else-if</code> ... <code>v-else</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- v-for -->
+        <div class="row content-box">
+          <div class="col-md-2">
+            <div>v-for</div>
+            <div>v-for 需要提供一个 <code>key</code> 的特殊属性</div>
+          </div>
+          <div class="col-md-10">
+            <div v-for=" (line, index) in vForList " :key="index" class="alert alert-primary">
+              <button v-if=" index > 3 " v-on:click="removeVForList(index)" class="close">
+                <span>X</span>
+              </button>
+              <span>{{ index }}: </span>
+              <div v-html="line"></div>
+            </div>
+            <div>
+              <input v-model="vForInput" class="form-control" />
+              <button class="form-control btn-primary" v-on:click="addVForList">增加一句</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <script>
+      const TypeOptions = {RCC: 'RCC 工程信息网', ICC: 'ICC 慧讯网', VUE: 'VUE 从入门到精通', NODE: 'NODE 全面实战', V8: 'V8 深入理解'}
+      const TypeList = ['RCC', 'ICC', 'VUE', 'NODE', 'V8']
+      const VForList = [
+        '<div>v-for 可以对 Array | Object | number | string | Iterable (2.6 新增) 进行列表渲染</div>',
+        '<div>v-for 语法为: <code>alias in expression</code> ， 例如: <code>item in items</code></div>',
+        '<div>v-for 需要提供一个 <code>key</code> 的特殊属性</div>',
+        '<div>v-for 可以支持 Map 和 Set ，但是不能自动探测变更</div>'
+      ]
+      var vm = new Vue({
+        el: '#app',
+        data() {
+          return {
+            msg: 'Hello RCC',
+            htmlContent: '<button class="form-control btn-primary">点击</button>',
+            showContent: true,
+            typeOptions: TypeOptions,
+            showSelectedOptions: false,
+            selectedType: null,
+            vForList: VForList,
+            vForInput: ''
+          }
+        },
+        methods: {
+          selectOptionOnClick(selectedType, selectedTypeValue) {
+            this.selectedType = selectedType
+            this.showSelectedOptions = !this.showSelectedOptions
+          },
+          addVForList() {
+            if (this.vForInput && this.vForInput !== '') {
+              this.vForList.push(this.vForInput)
+              this.vForInput = ''
+            }
+          },
+          removeVForList(index) {
+            if (index > 3 && index < this.vForList.length) {
+              this.vForList.splice(index, 1)
+            }
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

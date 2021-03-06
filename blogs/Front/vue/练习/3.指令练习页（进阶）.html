@@ -1,0 +1,238 @@
+<html>
+  <head>
+    <title>RCC Vue.js Learning - 指令（基础） </title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+      .content-box {
+        border: solid gray 1px;
+        margin: 10px;
+        padding: 10px;
+      }
+      .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+      }
+      .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <body>
+    <div id="app">
+      <div class="container">
+
+        <!-- v-on -->
+        <div class="row content-box border border-secondary">
+          <div class="col-md-2">
+            <div>v-on:[event]</div>
+            <div>经常简写为 @[event]</div>
+          </div>
+          <div class="col-md-10">
+            <div>用在普通元素上时，可以监听原生 DOM 事件</div>
+            <div>用在自定义元素组件上时，也可以监听子组件触发的自定义事件，例如 子组件 中的 emit 事件</div>
+            <div>操作：</div>
+            <div>请自行把所有的修饰符都尝试一次：</div>
+            <div>
+              <code>.stop</code>&nbsp;
+              <code>.prevent</code>&nbsp;
+              <code>.capture</code>&nbsp;
+              <code>.self</code>&nbsp;
+              <code>.{keyCode | keyAlias}</code>&nbsp;
+              <code>.native</code>&nbsp;
+              <code>.once</code>&nbsp;
+              <code>.left</code>&nbsp;
+              <code>.right</code>&nbsp;
+              <code>.middle</code>&nbsp;
+              <code>.passive</code>&nbsp;
+            </div>
+            <div>
+              <div class="alert alert-primary">点击信息: <span>{{ clickMsg }}</span></div>
+              <transition name="fade">
+                <div style="position: fixed; top: 24px;">
+                  <div v-for=" (msg, index) in clickMsgList " :key="index" class="alert alert-success" role="alert">
+                    {{ msg }}
+                  </div>
+                </div>
+              </transition>
+            </div>
+            <div>普通 DOM 元素 v-on </div>
+            <div v-on:click="onClick" class="form-control btn-primary">
+              父级元素事件按钮监听
+              <div v-on:click.stop="onClick(true)" class="form-control btn-success">
+                子级元素事件按钮监听
+              </div>
+            </div>
+            <div style="margin-top: 20px;">
+              <div>子组件 v-on </div>
+              <children-component v-on:on-children-click="onChildrenClick" v-bind:show-result="false"></children-component>
+            </div>
+          </div>
+        </div>
+
+        <!-- v-bind -->
+        <div class="row content-box border border-secondary">
+          <div class="col-md-2">
+            <div>v-bind:[key]</div>
+            <div>经常简写为 :[key]</div>
+          </div>
+          <div class="col-md-10">
+            <div>v-bind 动态地绑定一个或多个特性，或一个组件 prop 到表达式</div>
+            <div>v-bind 可以绑定 原生的 DOM 属性</div>
+            <div>v-bind 可以绑定 子组件 的值</div>
+            <div style="height: 24px;"></div>
+            <div>
+              <div>这里绑定的是原生 DOM 元素上的 style 值</div>
+              <div v-bind:style="{ 'background-color': bgColor }" style="height: 50px; width: 200px;"></div>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" v-on:click="showSelectedOptions = !showSelectedOptions">
+                  {{ bgColor }}
+                </button>
+                <div v-show=" showSelectedOptions " class="dropdown-menu" style="display: block;">
+                  <a v-for=" (v, i) in colorList " :key="i" v-on:click=" bgColor = v, showSelectedOptions = !showSelectedOptions " class="dropdown-item" href="javascript: void(0);">{{ v }}</a>
+                </div>
+              </div>
+              <div style="height: 24px;"></div>
+              <children-component v-on:on-children-click="onChildrenClick" v-bind:show-result="true" :rate="selectedRate"></children-component>
+              <div>这个是绑定了 子组件 的 props </div>
+              <div>倍率选择</div>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" v-on:click="showRateOptions = !showRateOptions">
+                  {{ selectedRate }}
+                </button>
+                <div v-show=" showRateOptions " class="dropdown-menu" style="display: block;">
+                  <a v-for=" (v, i) in rateList " :key="i" v-on:click=" selectedRate = v, showRateOptions = !showRateOptions " class="dropdown-item" href="javascript: void(0);">{{ v }}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- v-model -->
+        <div class="row content-box border border-secondary">
+          <div class="col-md-2">
+            <div>v-model</div>
+            <div>v-model 和 :model 是不一样的</div>
+          </div>
+          <div class="col-md-10">
+            <div>v-model 可以实现数据的双向绑定</div>
+            <div>v-model 和 :model 是不一样的</div>
+            <div>:model 只是单向传值</div>
+            <div style="height: 24px;"></div>
+            <div>{{ vModelMsg}}</div>
+            <div>
+              <input v-model="vModelMsg" class="form-control" />
+            </div>
+            <div style="height: 24px;"></div>
+            <children-component v-model="childrenResult" v-on:on-children-click="onChildrenClick" v-bind:show-result="true" :rate="selectedRate"></children-component>
+            <div>和 子组件 的双向绑定，可以和 v-bind 中的对比看</div>
+            <div>倍率选择</div>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" v-on:click="showRateOptions = !showRateOptions">
+                {{ selectedRate }}
+              </button>
+              <div v-show=" showRateOptions " class="dropdown-menu" style="display: block;">
+                <a v-for=" (v, i) in rateList " :key="i" v-on:click=" selectedRate = v, showRateOptions = !showRateOptions " class="dropdown-item" href="javascript: void(0);">{{ v }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <script>
+      const ColorList = ['black', 'red', 'white', 'green']
+      const RateList = [1, 2, 3, 4]
+      // 注册组件
+      Vue.component('children-component', {
+        props: {
+          rate: {
+            type: Number,
+            default: 1
+          },
+          result: {
+            type: Number,
+            default: 0
+          },
+          showResult: {
+            type: Boolean,
+            default: false
+          }
+        },
+        model: {
+          prop: 'result',
+          event: 'on-result-change'
+        },
+        data: () => {
+          // 组件内部 data 不影响父组件 的 data
+          return {
+            count: 0
+          }
+        },
+        methods: {
+          buttonOnClick() {
+            this.count++
+            // 子组件 $emit 可以在父组件中 v-on
+            // $emit([event], [data])
+            // v-on:[event]="[method](data)"
+            this.$emit('on-children-click', this.count)
+          }
+        },
+        computed: {
+          currentResult() {
+            return this.count * this.rate
+          }
+        },
+        watch: {
+          rate(value) {
+            console.log(`Prop 'rate' is changed - ${this.rate}`)
+          },
+          currentResult(value) {
+            this.$emit('on-result-change', value)
+          }
+        },
+        template: '<button v-on:click="buttonOnClick" class="form-control btn-warning">Click {{ count }} Times<template v-if="showResult">, Result is {{ result }}, CurrentResult is {{ currentResult }}</template></button>'
+      })
+      var vm = new Vue({
+        el: '#app',
+        data() {
+          return {
+            clickMsg: '未监听到事件',
+            // message list
+            clickMsgList: [],
+            clickSetTimeout: [],
+            count: 0,
+            bgColor: 'black',
+            colorList: ColorList,
+            showSelectedOptions: false,
+            rateList: RateList,
+            selectedRate: 1,
+            showRateOptions: false,
+            vModelMsg: 'v-model 可以在 input select textarea components 中进行数据的双向绑定',
+            childrenResult: 0
+          }
+        },
+        methods: {
+          // 监听点击事件
+          onClick(children = false) {
+            this.clickMsg = `${children === true ? '子级元素的 - ' : '父级元素的 - '}普通的 Click`
+            this.clickMsgList.push(this.clickMsg)
+            this.initClickMsgList()
+          },
+          // 监听子组件事件
+          onChildrenClick(count) {
+            this.clickMsg = ` v-on 来自子组件的 emit , 子组件 count: ${count},  父组件 count : ${this.count}`
+            this.clickMsgList.push(this.clickMsg)
+            this.initClickMsgList(2000)
+          },
+          // 处理 message alert
+          initClickMsgList(during = 1000) {
+            this.clickSetTimeout.push(setTimeout(() => {
+              this.clickMsgList.pop()
+            }, during))
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

@@ -4,9 +4,13 @@
 
 VuePress: https://vuepress.vuejs.org/zh/
 
-## 写得少？
 
-慢慢写吧，毕竟没有大学时候那么有空了，当个娱乐板块
+## 正在建设中
+
+正在将各种文档更新搬运过来 ...
+
+TO BE CONTINUE
+
 
 ## Live
 
