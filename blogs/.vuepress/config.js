@@ -31,15 +31,18 @@ let fileTree = [{
   text: 'Ruby',
   link: '/Ruby',
   items: [{
-    text: 'ruby入门',
+    text: 'ruby 入门',
     link: '/Ruby/ruby入门'
   }]
 }, {
   text: '前端',
   link: '/Front',
   items: [{
-    text: 'Vue入门',
+    text: 'Vue 入门',
     link: '/Front/vue/vue'
+  }, {
+    text: 'Webpack 从入门到放弃',
+    link: '/Front/webpack/webpack'
   }]
 }]
 
