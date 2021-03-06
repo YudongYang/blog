@@ -2,7 +2,7 @@
 home: true
 heroImage: /avatar/sea.jpeg
 heroText: 宇东的博客
-tagline: 这是宇东的博客，主要是技术积累方面的文章，欢迎大家交流
+tagline: 这是宇东的博客，主要是技术积累方面的文章，正在努力建设中
 actionText: Github
 actionLink: https://github.com/YudongYang/blog
 features:
