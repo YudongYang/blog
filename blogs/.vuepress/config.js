@@ -106,7 +106,7 @@ changeFileTreeToSidebarTree()
 module.exports = {
   base: '/',
   title: '宇东的博客',
-  description: '这是宇东的博客，纯粹是个记事本',
+  description: '这是宇东的博客',
   head: [
     ['link', {rel: 'icon', href: '/avatar/sea.jpeg'}]
   ],
