@@ -118,7 +118,8 @@ module.exports = {
   dest: 'docs',
   theme: defaultTheme({
     navbar: fileTree,
-    sidebar: sidebarTree
+    sidebar: sidebarTree,
+    repo: 'YudongYang/blog'
   }),
   plugins: [
     googleAnalyticsPlugin({
