@@ -4,61 +4,61 @@ let fileTree = [{
 }, {
   text: 'Linux',
   link: '/Linux',
-  items: [{
+  children: [{
     text: 'Linux',
     link: '/Linux/'
   }, {
     text: 'ubuntu安装',
-    link: '/Linux/ubuntu安装'
+    link: '/Linux/ubuntu安装.md'
   }, {
     text: '开发环境',
-    link: '/Linux/开发环境'
+    link: '/Linux/开发环境.md'
   }, {
     text: '安装psensor',
-    link: '/Linux/安装psensor'
+    link: '/Linux/安装psensor.md'
   }]
 }, {
   text: 'Docker',
-  link: '/Docker',
-  items: [{
+  // link: '/Docker',
+  children: [{
     text: 'docker常用命令',
-    link: '/Docker/docker常用命令'
+    link: '/Docker/docker常用命令.md'
   }, {
-    text: 'ubuntu 安装 docker & docker-compose',
-    link: '/Docker/ubuntu安装docker'
+    text: 'ubuntu 安装 docker & docker-compose.md',
+    link: '/Docker/ubuntu安装docker.md'
   }]
 }, {
   text: 'Ruby',
-  link: '/Ruby',
-  items: [{
+  // link: '/Ruby',
+  children: [{
     text: 'ruby 入门',
-    link: '/Ruby/ruby入门'
+    link: '/Ruby/ruby入门.md'
   }]
 }, {
   text: '数据库',
-  link: '/Database',
-  items: [{
+  // link: '/Database',
+  children: [{
     text: 'PostgreSQL',
-    link: '/Database/PostgreSQL/'
+    link: '/Database/PostgreSQL/index.md'
   }, {
     text: 'PostgreSQL 安装并测试',
-    link: '/Database/PostgreSQL/安装测试'
+    link: '/Database/PostgreSQL/安装测试.md'
   }, {
     text: 'ElasticSearch',
-    link: '/Database/ElasticSearch/'
+    link: '/Database/ElasticSearch/index.md'
   }, {
     text: 'ElasticSearch 安装并测试',
-    link: '/Database/ElasticSearch/安装测试'
+    link: '/Database/ElasticSearch/安装测试.md'
   }]
 }, {
   text: '前端',
-  link: '/Front',
-  items: [{
+  // link: '/Front',
+  children: [{
     text: 'Vue 入门',
-    link: '/Front/vue/vue'
+    link: '/Front/vue/vue.md'
   }, {
     text: 'Webpack 从入门到放弃',
-    link: '/Front/webpack/webpack'
+    link: '/Front/webpack/webpack.md'
   }]
 }]
 
@@ -67,15 +67,16 @@ let sidebarTree = []
 let changeFileTreeToSidebarTree = () => {
   fileTree.forEach((item) => {
     let childrens = []
-    if(item['items'] && item['items'].length > 0) {
-      item['items'].forEach((childrenItem) => {
+    if(item['children'] && item['children'].length > 0) {
+      item['children'].forEach((childrenItem) => {
         childrens.push(childrenItem['link'])
       })
     } else {
       childrens = [item['link']]
     }
     sidebarTree.push({
-      title: item['text'],
+      text: item['text'],
+      link: item['link'],
       collapsable: true,
       children: childrens
     })
@@ -102,6 +103,8 @@ changeFileTreeToSidebarTree()
 //   sidebarTree.push(recursiveGetItem(fileItem))
 // })
 
+const { defaultTheme } = require('@vuepress/theme-default')
+const { googleAnalyticsPlugin } = require('@vuepress/plugin-google-analytics')
 
 module.exports = {
   base: '/',
@@ -113,16 +116,13 @@ module.exports = {
   host: '127.0.0.1',
   port: '8080',
   dest: 'docs',
-  themeConfig: {
-    nav: fileTree,
+  theme: defaultTheme({
+    navbar: fileTree,
     sidebar: sidebarTree
-  },
+  }),
   plugins: [
-    [
-      '@vuepress/google-analytics',
-      {
-        'ga': 'UA-136337873-2' // UA-00000000-0
-      }
-    ]
+    googleAnalyticsPlugin({
+      'id': 'UA-136337873-2'
+    })
   ]
 }

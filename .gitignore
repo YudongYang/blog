@@ -1,2 +1,4 @@
 #git commit ignore
 node_modules/
+.cache/
+.temp/
