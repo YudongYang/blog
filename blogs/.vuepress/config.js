@@ -105,6 +105,7 @@ changeFileTreeToSidebarTree()
 
 const { defaultTheme } = require('@vuepress/theme-default')
 const { googleAnalyticsPlugin } = require('@vuepress/plugin-google-analytics')
+const { sitemapPlugin } = require('vuepress-plugin-sitemap2')
 
 module.exports = {
   base: '/',
@@ -124,6 +125,9 @@ module.exports = {
   plugins: [
     googleAnalyticsPlugin({
       'id': 'UA-136337873-2'
+    }),
+    sitemapPlugin({
+      'hostname': 'https://blog.yudong.xyz'
     })
   ]
 }
