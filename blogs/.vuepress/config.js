@@ -1,3 +1,7 @@
+import { defaultTheme } from '@vuepress/theme-default'
+import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
+import { sitemapPlugin } from 'vuepress-plugin-sitemap2'
+
 let fileTree = [{
   text: 'Home',
   link: '/'
@@ -103,10 +107,6 @@ changeFileTreeToSidebarTree()
 //   sidebarTree.push(recursiveGetItem(fileItem))
 // })
 
-const { defaultTheme } = require('@vuepress/theme-default')
-const { googleAnalyticsPlugin } = require('@vuepress/plugin-google-analytics')
-const { sitemapPlugin } = require('vuepress-plugin-sitemap2')
-
 module.exports = {
   base: '/',
   title: '宇东的博客',
@@ -124,7 +124,7 @@ module.exports = {
   }),
   plugins: [
     googleAnalyticsPlugin({
-      'id': 'UA-136337873-2'
+      'id': 'G-T7K9WJNJYJ'
     }),
     sitemapPlugin({
       'hostname': 'https://blog.yudong.xyz'
