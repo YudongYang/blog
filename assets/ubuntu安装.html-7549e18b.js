@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-bca67866","path":"/Linux/ubuntu%E5%AE%89%E8%A3%85.html","title":"ubuntu16.04 和 windows10 双系统双硬盘安装","lang":"en-US","frontmatter":{},"headers":[],"git":{"updatedTime":1548497600000,"contributors":[{"name":"yudong","email":"yudongyang2011@gmail.com","commits":1}]},"filePathRelative":"Linux/ubuntu安装.md"}');export{t as data};

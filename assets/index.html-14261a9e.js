@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-5148ce14","path":"/Linux/","title":"这里是和 Linux 相关的文档","lang":"en-US","frontmatter":{},"headers":[],"git":{"updatedTime":1548497600000,"contributors":[{"name":"yudong","email":"yudongyang2011@gmail.com","commits":1}]},"filePathRelative":"Linux/README.md"}');export{e as data};

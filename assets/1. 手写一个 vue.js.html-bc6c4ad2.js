@@ -1,0 +1,1 @@
+import{_,p as e,q as t,R as s}from"./framework-30b324a0.js";const c={},o=s("p",null,"大佬帮忙写个文档先",-1),n=[o];function r(a,l){return e(),t("div",null,n)}const d=_(c,[["render",r],["__file","1. 手写一个 vue.js.html.vue"]]);export{d as default};

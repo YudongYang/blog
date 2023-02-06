@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://blog.yudong.xyz/sitemap.xml
+Sitemap: https://blog.yudong.xyz/sitemap.xml
